@@ -1,35 +1,20 @@
-mpi_head:
-    build: .
-    # image: openmpi
-    ports: 
-      - "22"
-    links: 
-      - mpi_node
+version: "3"
 
-mpi_node:
-    build: .
-    # image: openmpi
+services:
+  head:
+      image: openmpi:latest
+      tty: true
+      user: mpi_user
+      ports: 
+        - "22"
+      links:
+        - "node"
+      volumes:
+        - $PWD:/mnt
 
-
-# version: "2"
-
-# services:
-#   mpi_head:
-#     build: .
-#     # image: openmpi
-#     ports: 
-#       - "22"
-#     links: 
-#       - mpi_node
-#     networks:
-#       - net
-
-#   mpi_node:
-#     build: .
-#     # image: openmpi
-#     networks:
-#       - net
-
-# networks:
-#   net:
-#     driver: bridge
+  node:
+      image: openmpi:latest
+      tty: true
+      user: mpi_user
+      volumes:
+        - $PWD:/mnt
