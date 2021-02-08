@@ -48,7 +48,11 @@ Openmpi containers for running distributed computing programs (for lab) in local
 
 	  mpirun --hostfile host_list.txt test
 	 
+- Cleanup
+	
+          docker-compose down
+	
 
 ## Credits
 
-This repository is forked from [https://github.com/oweidner/docker.openmpi]
+This repository is forked from https://github.com/oweidner/docker.openmpi
